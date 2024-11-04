@@ -11,11 +11,20 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data
 @Document("process-movie")
 @TypeAlias("process-movie")
+@ToString(onlyExplicitlyIncluded = true)
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class ProcessMovie {
 
     @Id
@@ -25,9 +34,12 @@ public class ProcessMovie {
 
     @JsonProperty("id")
     @Indexed(unique = true)
+    @ToString.Include
     private long sourceId;
 
+    @ToString.Include
     private String name;
+
     private String type;
     private int typeNumber;
     private int year;
@@ -104,7 +116,7 @@ public class ProcessMovie {
 
     @Data
     public static class Videos {
-        private List<RowMovie.Trailer> trailers;
+        private List<ProcessMovie.Trailer> trailers;
     }
 
     @Data
@@ -158,9 +170,9 @@ public class ProcessMovie {
 
     @Data
     public static class Fees {
-        private RowMovie.Fee world;
-        private RowMovie.Fee russia;
-        private RowMovie.Fee usa;
+        private ProcessMovie.Fee world;
+        private ProcessMovie.Fee russia;
+        private ProcessMovie.Fee usa;
     }
 
     @Data
@@ -187,8 +199,8 @@ public class ProcessMovie {
         private String enName;
         private String alternativeName;
         private String type;
-        private RowMovie.Poster poster;
-        private RowMovie.Rating rating;
+        private ProcessMovie.Poster poster;
+        private ProcessMovie.Rating rating;
         private int year;
     }
 
@@ -201,20 +213,20 @@ public class ProcessMovie {
         private String enName;
         private String alternativeName;
         private String type;
-        private RowMovie.Poster poster;
-        private RowMovie.Rating rating;
+        private ProcessMovie.Poster poster;
+        private ProcessMovie.Rating rating;
         private int year;
     }
 
     @Data
     public static class Watchability {
-        private List<RowMovie.WatchabilityItem> items;
+        private List<ProcessMovie.WatchabilityItem> items;
     }
 
     @Data
     public static class WatchabilityItem {
         private String name;
-        private RowMovie.Logo logo;
+        private ProcessMovie.Logo logo;
         private String url;
     }
 
@@ -232,12 +244,12 @@ public class ProcessMovie {
 
     @Data
     public static  class Networks {
-        private List<RowMovie.NetworkItem> items;
+        private List<ProcessMovie.NetworkItem> items;
     }
 
     @Data
     public static class NetworkItem {
         private String name;
-        private RowMovie.Logo logo;
+        private ProcessMovie.Logo logo;
     }
 }
