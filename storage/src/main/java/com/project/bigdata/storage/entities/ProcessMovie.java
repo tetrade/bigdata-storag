@@ -2,14 +2,30 @@ package com.project.bigdata.storage.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import org.springframework.data.annotation.TypeAlias;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 
 @Data
+@Document("process-movie")
+@TypeAlias("process-movie")
 public class ProcessMovie {
 
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private String id;
+
+    @JsonProperty("id")
+    @Indexed(unique = true)
+    private long sourceId;
 
     private String name;
     private String type;

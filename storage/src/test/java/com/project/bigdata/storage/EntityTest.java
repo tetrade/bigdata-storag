@@ -23,6 +23,7 @@ class EntityTest {
     @Test
     void testRowMovieEntity() throws IOException {
         RowMovie rowMovie = MAPPER.readValue(testFilePath.toFile(), RowMovie.class);
+        rowMovie.setId("test-mongo-id");
         assertThat(rowMovie).usingRecursiveAssertion().hasNoNullFields();
     }
 }

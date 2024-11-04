@@ -2,11 +2,16 @@ package com.project.bigdata.storage.entities;
 
 import java.util.List;
 
+import org.springframework.data.annotation.TypeAlias;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
+@Document("row-movie")
+@TypeAlias("row-movie")
 public class RowMovie extends ProcessMovie {
     private String description;
     private String alternativeName;
@@ -14,7 +19,7 @@ public class RowMovie extends ProcessMovie {
     private String shortDescription;
     private List<Name> names;
     private ExternalId externalId;
-    private RowMovie.Logo logo;
+    private ProcessMovie.Logo logo;
     private Poster poster;
     private Backdrop backdrop;
 
