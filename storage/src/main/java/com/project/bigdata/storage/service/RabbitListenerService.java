@@ -1,7 +1,6 @@
 package com.project.bigdata.storage.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.project.bigdata.storage.entities.ProcessMovie;
 import com.project.bigdata.storage.entities.RowMovie;
 import com.project.bigdata.storage.repository.RowMovieRepository;
 

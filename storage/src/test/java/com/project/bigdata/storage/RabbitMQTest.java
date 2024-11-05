@@ -1,6 +1,5 @@
 package com.project.bigdata.storage;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.amqp.core.MessageProperties.CONTENT_TYPE_JSON;
 
 import java.io.IOException;
@@ -8,10 +7,6 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Objects;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.project.bigdata.storage.entities.RowMovie;
-import com.project.bigdata.storage.repository.RowMovieRepository;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -28,13 +23,8 @@ class RabbitMQTest {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    @Autowired
-    private RowMovieRepository rowMovieRepository;
-
     @Value("${rabbit.queue.name}")
     private String queueName;
-
-    private static final ObjectMapper MAPPER = new ObjectMapper();
 
     private final Path testFilePath =
             Path.of(Objects.requireNonNull(getClass().getClassLoader().getResource("movie.json")).toURI());
