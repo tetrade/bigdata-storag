@@ -2,6 +2,7 @@ package com.project.bigdata.storage.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import org.springframework.data.annotation.TypeAlias;
@@ -104,6 +105,7 @@ public class ProcessMovie {
     }
 
     @Data
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Logo {
         private String url;
     }

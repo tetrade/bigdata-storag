@@ -2,6 +2,8 @@ package com.project.bigdata.storage.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -13,6 +15,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Document("row-movie")
 @TypeAlias("row-movie")
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
@@ -46,6 +49,7 @@ public class RowMovie extends ProcessMovie {
     }
 
     @Data
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Name {
         private String name;
         private String language;
